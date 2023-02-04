@@ -1,0 +1,8 @@
+[run]
+source = .
+omit =
+    main.py
+
+[report]
+show_missing = true
+precision = 2
