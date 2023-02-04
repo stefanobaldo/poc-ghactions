@@ -1,4 +1,4 @@
-fastapi
+fastapi==0.86.0
 uvicorn
 
 #for template
