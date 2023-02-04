@@ -37,8 +37,22 @@ jobs:
 
       - name: Install Requirements
         working-directory: backend
-        run: pip install -r requirements.txt
+        run: |
+          pip install -r requirements.txt
+          pip install coverage
 
       - name: Run Tests
         working-directory: backend
-        run: pytest
+        run: coverage run -m pytest
+
+      - name: Generate XML file
+        working-directory: backend
+        run: coverage xml
+
+      - name: Upload to codecov
+        uses: codecov/codecov-action@v3
+        with:
+          directory: ./backend
+          token: ${{ secrets.CODECOV_TOKEN }}
+          verbose: true
+          fail_ci_if_error: true
